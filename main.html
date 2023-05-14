@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- 
+
 <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
@@ -17,17 +17,6 @@
 
     <link rel="icon" href="./img/favicon2/favicon.ico" />
     <script src="js/bouyomichan_client.js"></script>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FKQVD3TMXH"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-FKQVD3TMXH');
-    </script>
-    <!-- END: Google tag (gtag.js) -->
 
 
     <title>jimakuChan：音声認識字幕ちゃん</title>
@@ -106,7 +95,7 @@
     </style>
 
     <script>
-         
+
         // URLパラメータ取得用関数 ---------------------------
         function getParam(name, url) {
             if (!url) url = window.location.href;
@@ -152,7 +141,7 @@
         var trans2_destlang = '';
 
         var gas_key = getParam('gas_key');
-        
+
         var TRANS_URL = 'https://script.google.com/macros/s/' + gas_key + '/exec';
         var query = ''
 
@@ -185,7 +174,7 @@
                     sexual_words = sexual_words.filter(Boolean);
                 })
         }
-            
+
 
         // 音声認識本体 /////////////////////////////////////////////////
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
@@ -215,7 +204,7 @@
         };
 
         ///////////////////////////////////////////////////////////
-        // 各種イベントへの対応 --------------------------------- 
+        // 各種イベントへの対応 ---------------------------------
         // 音声・認識 開始
         recognition.onstart = () => {
             console.log("onstart cnt:" + String(my_count));
@@ -229,7 +218,7 @@
         recognition.onspeechstart = () => {
             console.log("onspeechstart cnt:" + String(my_count));
         }
-        
+
         // 音声・認識 終了
         recognition.onspeechend = () => {
             console.log("onspeechend cnt:" + String(my_count));
@@ -279,12 +268,12 @@
                     // タイムアウトでの文字消去設定（音声認識結果を受けてリセット）
                     if (timer != null) {
                         clearTimeout(id);
-                        id = setTimeout(fn_del,timer);   
+                        id = setTimeout(fn_del,timer);
                     }
 
                     // 認識結果を取得
                     recog_text = results[i][0].transcript;
-                        
+
                     // 認識結果の中の危険単語を検知して，結果を***に置き換える
                     if(anti_sexual != 'false') {
                         for (var j = 0; j < sexual_words.length; j++) {
@@ -350,7 +339,7 @@
                         // タイムアウトでの文字消去設定（翻訳結果受信を受けてリセット）
                         if (timer != null) {
                             clearTimeout(id);
-                            id = setTimeout(fn_del,timer);   
+                            id = setTimeout(fn_del,timer);
                         }
 
                     } else {
@@ -394,9 +383,9 @@
         recognition.start();
         console.log("recog start: cnt:" + String(my_count));
 
-    </script> 
+    </script>
 </head>
- 
+
 
 
 
@@ -410,37 +399,37 @@
                 <div id="speech_text">
                     <div class="stroke-single-bg" id="speech_text-bg">
                         [音声認識字幕ちゃん (Ver:2023.04.14)]
-                    </div> 
+                    </div>
                     <div class="stroke-single-fg" id="speech_text-fg">
                         [音声認識字幕ちゃん (Ver:2023.04.14)]
                     </div>
                     <div class="stroke-single-imb" id="speech_text-imb">
                         [音声認識字幕ちゃん (Ver:2023.04.14)]
-                    </div> 
+                    </div>
                 </div>
 
                 <div id="trans_text">
                     <div class="stroke-single-bg" id="trans_text-bg">
                         [開発者：さぁたん ＆ さよなりω/(大学教員)西村良太]
-                    </div>  
+                    </div>
                     <div class="stroke-single-fg" id="trans_text-fg">
                         [開発者：さぁたん ＆ さよなりω/(大学教員)西村良太]
-                    </div>  
+                    </div>
                     <div class="stroke-single-imb" id="trans_text-imb">
                         [開発者：さぁたん ＆ さよなりω/(大学教員)西村良太]
-                    </div>  
+                    </div>
                 </div>
 
                 <div id="trans_text2">
                     <div class="stroke-single-bg" id="trans_text2-bg">
                         [ここに結果表示（翻訳２）]
-                    </div>  
+                    </div>
                     <div class="stroke-single-fg" id="trans_text2-fg">
                         [ここに結果表示（翻訳２）]
-                    </div>  
+                    </div>
                     <div class="stroke-single-imb" id="trans_text2-imb">
                         [ここに結果表示（翻訳２）]
-                    </div>  
+                    </div>
                 </div>
             </td></tr>
         </table>
